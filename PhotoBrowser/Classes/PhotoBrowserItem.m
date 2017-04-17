@@ -24,7 +24,10 @@
     //添加图片视图到滚动视图，以此实现缩放
     [self.scrollView addSubview:self.imageView];
     self.imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    self.scrollView.contentSize = self.imageView.bounds.size;
+    self.scrollView.delegate = self;
+    self.scrollView.contentSize = self.imageView.bounds.size;
+    self.scrollView.maximumZoomScale = 2;
+    self.scrollView.minimumZoomScale = 1;
 }
 
 - (UIImageView *)imageView
@@ -41,9 +44,22 @@
 - (void)setData:(id)data
 {
     self.imageView.image = data;
+    
+    [self.scrollView setZoomScale:1];
+}
+
+
+#pragma mark - UISrcollViewDelegate
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.imageView;
 }
 
 
 @end
+
+
+
 
 
