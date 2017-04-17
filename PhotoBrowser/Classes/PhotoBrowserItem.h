@@ -1,5 +1,5 @@
 //
-//  PhotoBrowserController.h
+//  PhotoBrowserItem.h
 //  PhotoBrowser
 //
 //  Created by LiliEhuu on 17/4/17.
@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PhotoBrowserController : UIViewController
+@interface PhotoBrowserItem : UICollectionViewCell
 
-+ (instancetype)browser;
-
-- (void)setPhotos:(NSArray *)photos;
+@property (strong , nonatomic) id data; //资源数据
 
 
 @end

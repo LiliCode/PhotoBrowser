@@ -7,8 +7,11 @@
 //
 
 #import "PhotoBrowserController.h"
+#import "PhotoBrowserItem.h"
 
-@interface PhotoBrowserController ()
+@interface PhotoBrowserController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@property (strong , nonatomic) UICollectionView *collectionView;
+@property (strong , nonatomic) NSArray *list;
 
 @end
 
@@ -20,36 +23,61 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     [super viewDidLoad];
     
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
+    [self initInterface];
     
 }
 
-- (void)didReceiveMemoryWarning
+- (void)initInterface
 {
-    [super didReceiveMemoryWarning];
-    
+    //layout
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.minimumLineSpacing = 0;
+    layout.minimumInteritemSpacing = 0;
+    layout.itemSize = [UIScreen mainScreen].bounds.size;
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal; //水平滚动
+    self.collectionView = [[UICollectionView alloc] initWithFrame:[UIScreen mainScreen].bounds collectionViewLayout:layout];
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    self.collectionView.pagingEnabled = YES;    //整页滚动
+    self.collectionView.showsVerticalScrollIndicator = NO;
+    self.collectionView.showsHorizontalScrollIndicator = NO;
+    [self.view addSubview:self.collectionView];
+    //注册Cell
+    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([PhotoBrowserItem class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
 }
+
++ (instancetype)browser
+{
+    return [[self alloc] init];
+}
+
+- (void)setPhotos:(NSArray *)photos
+{
+    self.list = [photos copy];
+}
+
+
+
 
 
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 0;
+    return 1;
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 0;
+    return self.list.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    PhotoBrowserItem *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    
+    cell.data = [self.list objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -60,6 +88,17 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     
 }
+
+
+
+#pragma mark - 内存警告
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    
+}
+
 
 @end
 

@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "PhotoBrowserController.h"
 
 @interface ViewController ()
 
@@ -14,15 +15,36 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    
 }
 
 
-- (void)didReceiveMemoryWarning {
+- (IBAction)show:(UIButton *)sender
+{
+    NSMutableArray *photos = [[NSMutableArray alloc] init];
+    for (NSUInteger count = 1; count <= 5; count++)
+    {
+        NSString *photoName = [NSString stringWithFormat:@"image%lu.jpeg", count];
+        UIImage *image = [UIImage imageNamed:photoName];
+        [photos addObject:image];
+    }
+    
+    PhotoBrowserController *browserController = [PhotoBrowserController browser];
+    [browserController setPhotos:[photos copy]];
+    [self presentViewController:browserController animated:YES completion:nil];
+}
+
+
+
+
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
 }
 
 

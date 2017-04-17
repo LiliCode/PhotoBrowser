@@ -21,6 +21,8 @@
 		222AE8291EA4615E00EA0741 /* image3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 222AE8241EA4615E00EA0741 /* image3.jpeg */; };
 		222AE82A1EA4615E00EA0741 /* image4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 222AE8251EA4615E00EA0741 /* image4.jpeg */; };
 		222AE82B1EA4615E00EA0741 /* image5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 222AE8261EA4615E00EA0741 /* image5.jpeg */; };
+		222AE82E1EA4648B00EA0741 /* PhotoBrowserItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 222AE82D1EA4648B00EA0741 /* PhotoBrowserItem.m */; };
+		222AE8301EA4649800EA0741 /* PhotoBrowserItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222AE82F1EA4649800EA0741 /* PhotoBrowserItem.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,9 @@
 		222AE8241EA4615E00EA0741 /* image3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image3.jpeg; sourceTree = "<group>"; };
 		222AE8251EA4615E00EA0741 /* image4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image4.jpeg; sourceTree = "<group>"; };
 		222AE8261EA4615E00EA0741 /* image5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image5.jpeg; sourceTree = "<group>"; };
+		222AE82C1EA4648B00EA0741 /* PhotoBrowserItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoBrowserItem.h; sourceTree = "<group>"; };
+		222AE82D1EA4648B00EA0741 /* PhotoBrowserItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoBrowserItem.m; sourceTree = "<group>"; };
+		222AE82F1EA4649800EA0741 /* PhotoBrowserItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoBrowserItem.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +177,9 @@
 			children = (
 				222AE81F1EA45B8D00EA0741 /* PhotoBrowserController.h */,
 				222AE8201EA45B8D00EA0741 /* PhotoBrowserController.m */,
+				222AE82C1EA4648B00EA0741 /* PhotoBrowserItem.h */,
+				222AE82D1EA4648B00EA0741 /* PhotoBrowserItem.m */,
+				222AE82F1EA4649800EA0741 /* PhotoBrowserItem.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -288,6 +296,7 @@
 				222AE7FA1EA45A8900EA0741 /* LaunchScreen.storyboard in Resources */,
 				222AE8281EA4615E00EA0741 /* image2.jpeg in Resources */,
 				222AE7F71EA45A8900EA0741 /* Assets.xcassets in Resources */,
+				222AE8301EA4649800EA0741 /* PhotoBrowserItem.xib in Resources */,
 				222AE82A1EA4615E00EA0741 /* image4.jpeg in Resources */,
 				222AE7F51EA45A8900EA0741 /* Main.storyboard in Resources */,
 				222AE8271EA4615E00EA0741 /* image1.jpeg in Resources */,
@@ -317,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				222AE82E1EA4648B00EA0741 /* PhotoBrowserItem.m in Sources */,
 				222AE7F21EA45A8900EA0741 /* ViewController.m in Sources */,
 				222AE8211EA45B8D00EA0741 /* PhotoBrowserController.m in Sources */,
 				222AE7EF1EA45A8900EA0741 /* AppDelegate.m in Sources */,
@@ -471,9 +481,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6S88C5NHSC;
 				INFOPLIST_FILE = PhotoBrowser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EH.PhotoBrowser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -483,9 +495,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6S88C5NHSC;
 				INFOPLIST_FILE = PhotoBrowser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EH.PhotoBrowser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
