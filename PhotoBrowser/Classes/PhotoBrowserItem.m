@@ -8,6 +8,9 @@
 
 #import "PhotoBrowserItem.h"
 
+#define MAX_SCALE (2)
+#define MIN_SCALE (1)
+
 @interface PhotoBrowserItem ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong , nonatomic) UIImageView *imageView;
@@ -26,8 +29,29 @@
     self.imageView.center = [self screenCenter];
     self.scrollView.delegate = self;
     self.scrollView.contentSize = self.imageView.bounds.size;
-    self.scrollView.maximumZoomScale = 2;
-    self.scrollView.minimumZoomScale = 1;
+    self.scrollView.maximumZoomScale = MAX_SCALE;
+    self.scrollView.minimumZoomScale = MIN_SCALE;
+    
+    //添加双击手势
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapAction:)];
+    [doubleTap setNumberOfTapsRequired:2];
+    [self.scrollView addGestureRecognizer:doubleTap];
+}
+
+- (void)doubleTapAction:(UITapGestureRecognizer *)sender
+{
+    if (self.scrollView.zoomScale == MAX_SCALE)
+    {
+        [self.scrollView setZoomScale:MIN_SCALE animated:YES];
+    }
+    else if (self.scrollView.zoomScale == MIN_SCALE)
+    {
+        [self.scrollView setZoomScale:MAX_SCALE animated:YES];
+    }
+    else
+    {
+        [self.scrollView setZoomScale:MIN_SCALE animated:YES];
+    }
 }
 
 - (UIImageView *)imageView
@@ -36,6 +60,7 @@
     {
         _imageView = [[UIImageView alloc] initWithFrame:self.bounds];
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
+        _imageView.userInteractionEnabled = YES;
     }
     
     return _imageView;
