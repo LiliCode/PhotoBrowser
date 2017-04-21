@@ -7,6 +7,8 @@
 //
 
 #import "PhotoBrowserItem.h"
+#import <UIView+WebCache.h>
+#import <UIImageView+WebCache.h>
 
 #define MAX_SCALE (2)
 #define MIN_SCALE (1)
@@ -38,6 +40,8 @@
     [self.scrollView addGestureRecognizer:doubleTap];
 }
 
+
+
 - (void)doubleTapAction:(UITapGestureRecognizer *)sender
 {
     if (self.scrollView.zoomScale == MAX_SCALE)
@@ -58,7 +62,7 @@
 {
     if (!_imageView)
     {
-        _imageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        _imageView = [[UIImageView alloc] init];
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
         _imageView.userInteractionEnabled = YES;
     }
@@ -68,9 +72,16 @@
 
 - (void)setData:(id)data
 {
-    if ([data isMemberOfClass:[NSString class]])    //链接字符串或者其他名称
+    if ([data isKindOfClass:[NSString class]])    //链接字符串或者其他名称
     {
-        
+        [self.imageView sd_setShowActivityIndicatorView:YES];
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:data] placeholderImage:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            if (!error)
+            {
+                [self.scrollView setZoomScale:1];
+                [self setImageViewFrame:image];
+            }
+        }];
     }
     else if ([data isMemberOfClass:[UIImage class]])
     {
@@ -106,6 +117,7 @@
     
     //设置
     self.imageView.bounds = CGRectMake(0, 0, imageViewSize.width, imageViewSize.height);
+    [self.scrollView setContentSize:self.imageView.bounds.size];
 }
 
 - (CGPoint)screenCenter
