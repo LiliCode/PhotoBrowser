@@ -26,7 +26,7 @@
 - (IBAction)show:(UIButton *)sender
 {
     NSMutableArray *photos = [[NSMutableArray alloc] init];
-    for (NSUInteger count = 1; count <= 5; count++)
+    for (NSUInteger count = 1; count <= 6; count++)
     {
         NSString *photoName = [NSString stringWithFormat:@"image%lu.jpeg", count];
         UIImage *image = [UIImage imageNamed:photoName];

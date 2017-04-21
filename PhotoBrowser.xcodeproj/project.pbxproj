@@ -23,6 +23,8 @@
 		222AE82B1EA4615E00EA0741 /* image5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 222AE8261EA4615E00EA0741 /* image5.jpeg */; };
 		222AE82E1EA4648B00EA0741 /* PhotoBrowserItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 222AE82D1EA4648B00EA0741 /* PhotoBrowserItem.m */; };
 		222AE8301EA4649800EA0741 /* PhotoBrowserItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222AE82F1EA4649800EA0741 /* PhotoBrowserItem.xib */; };
+		22AE9C2D1EA9AC3700F1D0EC /* image6.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 22AE9C2C1EA9AC3700F1D0EC /* image6.jpeg */; };
+		22AE9C301EA9B4A300F1D0EC /* PhotoBroeserNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22AE9C2F1EA9B4A200F1D0EC /* PhotoBroeserNavigationView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,9 @@
 		222AE82C1EA4648B00EA0741 /* PhotoBrowserItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoBrowserItem.h; sourceTree = "<group>"; };
 		222AE82D1EA4648B00EA0741 /* PhotoBrowserItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoBrowserItem.m; sourceTree = "<group>"; };
 		222AE82F1EA4649800EA0741 /* PhotoBrowserItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoBrowserItem.xib; sourceTree = "<group>"; };
+		22AE9C2C1EA9AC3700F1D0EC /* image6.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image6.jpeg; sourceTree = "<group>"; };
+		22AE9C2E1EA9B4A200F1D0EC /* PhotoBroeserNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoBroeserNavigationView.h; sourceTree = "<group>"; };
+		22AE9C2F1EA9B4A200F1D0EC /* PhotoBroeserNavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoBroeserNavigationView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +173,7 @@
 				222AE8241EA4615E00EA0741 /* image3.jpeg */,
 				222AE8251EA4615E00EA0741 /* image4.jpeg */,
 				222AE8261EA4615E00EA0741 /* image5.jpeg */,
+				22AE9C2C1EA9AC3700F1D0EC /* image6.jpeg */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -180,6 +186,8 @@
 				222AE82C1EA4648B00EA0741 /* PhotoBrowserItem.h */,
 				222AE82D1EA4648B00EA0741 /* PhotoBrowserItem.m */,
 				222AE82F1EA4649800EA0741 /* PhotoBrowserItem.xib */,
+				22AE9C2E1EA9B4A200F1D0EC /* PhotoBroeserNavigationView.h */,
+				22AE9C2F1EA9B4A200F1D0EC /* PhotoBroeserNavigationView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -301,6 +309,7 @@
 				222AE7F51EA45A8900EA0741 /* Main.storyboard in Resources */,
 				222AE8271EA4615E00EA0741 /* image1.jpeg in Resources */,
 				222AE8291EA4615E00EA0741 /* image3.jpeg in Resources */,
+				22AE9C2D1EA9AC3700F1D0EC /* image6.jpeg in Resources */,
 				222AE82B1EA4615E00EA0741 /* image5.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,6 +337,7 @@
 			files = (
 				222AE82E1EA4648B00EA0741 /* PhotoBrowserItem.m in Sources */,
 				222AE7F21EA45A8900EA0741 /* ViewController.m in Sources */,
+				22AE9C301EA9B4A300F1D0EC /* PhotoBroeserNavigationView.m in Sources */,
 				222AE8211EA45B8D00EA0741 /* PhotoBrowserController.m in Sources */,
 				222AE7EF1EA45A8900EA0741 /* AppDelegate.m in Sources */,
 				222AE7EC1EA45A8900EA0741 /* main.m in Sources */,
@@ -572,6 +582,7 @@
 				222AE8161EA45A8A00EA0741 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		222AE8171EA45A8A00EA0741 /* Build configuration list for PBXNativeTarget "PhotoBrowserTests" */ = {
 			isa = XCConfigurationList;
@@ -580,6 +591,7 @@
 				222AE8191EA45A8A00EA0741 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		222AE81A1EA45A8A00EA0741 /* Build configuration list for PBXNativeTarget "PhotoBrowserUITests" */ = {
 			isa = XCConfigurationList;
@@ -588,6 +600,7 @@
 				222AE81C1EA45A8A00EA0741 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
