@@ -68,10 +68,17 @@
 
 - (void)setData:(id)data
 {
-    self.imageView.image = data;
-    
-    [self.scrollView setZoomScale:1];
-    [self setImageViewFrame:data];
+    if ([data isMemberOfClass:[NSString class]])    //链接字符串或者其他名称
+    {
+        
+    }
+    else if ([data isMemberOfClass:[UIImage class]])
+    {
+        //直接关联
+        self.imageView.image = data;
+        [self.scrollView setZoomScale:1];
+        [self setImageViewFrame:data];
+    }
 }
 
 

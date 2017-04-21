@@ -47,17 +47,27 @@ static NSString * const reuseIdentifier = @"Cell";
     //注册Cell
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([PhotoBrowserItem class]) bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     //UIPageControl
-    self.pageControl = [[UIPageControl alloc] init];
-    CGSize size = [UIScreen mainScreen].bounds.size;
-    self.pageControl.bounds = CGRectMake(0, 0, size.width - 20, 100);
-    self.pageControl.center = CGPointMake(size.width * .5, size.height - 40);
-    self.pageControl.numberOfPages = [self.list count];
-    self.pageControl.pageIndicatorTintColor = [UIColor grayColor];
-    self.pageControl.currentPageIndicatorTintColor = [UIColor redColor];
-    self.pageControl.currentPage = 0;
-    [self.view addSubview:self.pageControl];
+    if (self.list.count > 1)
+    {
+        self.pageControl = [[UIPageControl alloc] init];
+        CGSize size = [UIScreen mainScreen].bounds.size;
+        self.pageControl.bounds = CGRectMake(0, 0, size.width - 20, 100);
+        self.pageControl.center = CGPointMake(size.width * .5, size.height - 40);
+        self.pageControl.numberOfPages = [self.list count];
+        self.pageControl.pageIndicatorTintColor = [UIColor grayColor];
+        self.pageControl.currentPageIndicatorTintColor = [UIColor redColor];
+        self.pageControl.currentPage = self.currentPageIndex;
+        [self.view addSubview:self.pageControl];
+    }
+    
     //顶部视图
     [self initNavigationView];
+    
+    //滚动到当前页
+    if (self.currentPageIndex)
+    {
+        [self.collectionView setContentOffset:CGPointMake(self.currentPageIndex * [UIScreen mainScreen].bounds.size.width, self.collectionView.contentOffset.y)];
+    }
 }
 
 + (instancetype)browser
@@ -74,7 +84,11 @@ static NSString * const reuseIdentifier = @"Cell";
 {
     self.navigationView = [[PhotoBroeserNavigationView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 60)];
     self.navigationView.delegate = self;
-    self.navigationView.navigationTitle = [NSString stringWithFormat:@"1/%lu", self.list.count];
+    if (self.list.count > 1)
+    {
+        self.navigationView.navigationTitle = [NSString stringWithFormat:@"%lu/%lu", self.currentPageIndex + 1, self.list.count];
+    }
+    
     self.navigationView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.3];
     [self.view addSubview:self.navigationView];
 }
@@ -122,17 +136,19 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     //停止滑动
-    //计算第几页
-    self.pageControl.currentPage = scrollView.contentOffset.x / [UIScreen mainScreen].bounds.size.width;
-    self.navigationView.navigationTitle = [NSString stringWithFormat:@"%ld/%lu", self.pageControl.currentPage + 1, self.list.count];
+    [self scrollViewDidEndScrollingAnimation:scrollView];
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
     //停止滑动动画
     //计算第几页
-    self.pageControl.currentPage = scrollView.contentOffset.x / [UIScreen mainScreen].bounds.size.width;
-    self.navigationView.navigationTitle = [NSString stringWithFormat:@"%ld/%lu", self.pageControl.currentPage + 1, self.list.count];
+    if (self.list.count > 1)
+    {
+        self.pageControl.currentPage = scrollView.contentOffset.x / [UIScreen mainScreen].bounds.size.width;
+        self.currentPageIndex = self.pageControl.currentPage;
+        self.navigationView.navigationTitle = [NSString stringWithFormat:@"%ld/%lu", self.pageControl.currentPage + 1, self.list.count];
+    }
 }
 
 

@@ -35,6 +35,7 @@
     
     PhotoBrowserController *browserController = [PhotoBrowserController browser];
     [browserController setPhotos:[photos copy]];
+//    browserController.currentPageIndex = 3;
     [self presentViewController:browserController animated:YES completion:nil];
 }
 
