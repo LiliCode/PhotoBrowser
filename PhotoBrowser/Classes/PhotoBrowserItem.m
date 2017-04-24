@@ -38,6 +38,8 @@
     self.imageView.center = [self screenCenter];
     self.scrollView.delegate = self;
     self.scrollView.contentSize = self.imageView.bounds.size;
+    self.scrollView.showsVerticalScrollIndicator = NO;
+    self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.maximumZoomScale = MAX_SCALE;
     self.scrollView.minimumZoomScale = MIN_SCALE;
     

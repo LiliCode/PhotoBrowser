@@ -29,11 +29,21 @@
                                     <action selector="show:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cxf-gJ-txW"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKH-uA-lp6">
+                                <rect key="frame" x="127" y="303" width="66" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="清除缓存"/>
+                                <connections>
+                                    <action selector="cleanCache:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Uu-pE-P8u"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ZIj-R2-rTA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6WV-DA-QQI"/>
                             <constraint firstItem="ZIj-R2-rTA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="8Ta-DT-DNl"/>
+                            <constraint firstItem="WKH-uA-lp6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="35" id="jQO-2j-re8"/>
+                            <constraint firstItem="WKH-uA-lp6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="t1g-si-smH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Wif-au-tdj"/>

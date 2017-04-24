@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "PhotoBrowserController.h"
+#import <SDImageCache.h>
 
 @interface ViewController ()
 
@@ -53,6 +54,13 @@
     [self presentViewController:browserController animated:YES completion:nil];
 }
 
+- (IBAction)cleanCache:(UIButton *)sender
+{
+    [[SDImageCache sharedImageCache] clearMemory];
+    [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+        NSLog(@"清除缓存成功");
+    }];
+}
 
 
 
