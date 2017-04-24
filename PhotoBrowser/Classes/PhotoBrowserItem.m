@@ -10,7 +10,7 @@
 #import <UIView+WebCache.h>
 #import <UIImageView+WebCache.h>
 
-#define MAX_SCALE (2)
+#define MAX_SCALE (3)
 #define MIN_SCALE (1)
 
 @interface PhotoBrowserItem ()<UIScrollViewDelegate>
@@ -21,6 +21,13 @@
 
 @implementation PhotoBrowserItem
 
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    
+    //每次重用Cell时充值UIScrollView的contentSize
+    self.scrollView.contentSize = CGSizeZero;
+}
 
 - (void)awakeFromNib
 {
@@ -65,6 +72,11 @@
         _imageView = [[UIImageView alloc] init];
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
         _imageView.userInteractionEnabled = YES;
+        
+#if 0
+        _imageView.layer.borderColor = [[UIColor redColor] CGColor];
+        _imageView.layer.borderWidth = 1;
+#endif
     }
     
     return _imageView;
@@ -97,22 +109,24 @@
 {
     //屏幕大小
     CGSize screenSize = [UIScreen mainScreen].bounds.size;
+    //屏幕宽高比例
+    CGFloat scScale = screenSize.width / screenSize.height;
     //图片宽高比例
     CGFloat imgScale = img.size.width / img.size.height;
     //需要计算的图片容器大小
     CGSize imageViewSize = CGSizeZero;
-    if (imgScale > 1)   //宽 > 高
+    if (imgScale > scScale)   //图片宽高比例 > 屏幕宽高比例
     {
         imageViewSize = CGSizeMake(screenSize.width, screenSize.width / imgScale);
     }
-    else if (imgScale < 1) //宽 < 高
+    else if (imgScale < scScale) //图片宽高比例 < 屏幕宽高比例
     {
-        imageViewSize = CGSizeMake(screenSize.height / imgScale, screenSize.height);
+        imageViewSize = CGSizeMake(screenSize.height * imgScale, screenSize.height);
     }
     else
     {
-        //宽 == 高
-        imageViewSize = CGSizeMake(screenSize.width, screenSize.width);
+        //图片宽高比例 = 屏幕宽高比例
+        imageViewSize = CGSizeMake(screenSize.width, screenSize.height);
     }
     
     //设置

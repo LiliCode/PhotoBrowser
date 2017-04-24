@@ -42,6 +42,10 @@
     
     [photos addObject:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492776360704&di=ca8a387d2da0a1ae6e221f35aed1049c&imgtype=0&src=http%3A%2F%2Fimage.tianjimedia.com%2FuploadImages%2F2014%2F287%2F22%2F06GVJ65S8H28.jpg"];
     
+    [photos addObject:[UIImage imageNamed:@"image7.JPG"]];
+    [photos addObject:[UIImage imageNamed:@"image8.JPG"]];
+    [photos addObject:[UIImage imageNamed:@"image9.JPG"]];
+    [photos addObject:[UIImage imageNamed:@"image10.JPG"]];
     
     PhotoBrowserController *browserController = [PhotoBrowserController browser];
     [browserController setPhotos:[photos copy]];
